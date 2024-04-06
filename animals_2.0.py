@@ -23,7 +23,7 @@ animais = {
     "Pinguim": "Vive na Antártida, é ótimo nadador e se desloca deslizando sobre o gelo.",
     "Macaco": "Vive em árvores, é ágil e tem habilidades para se balançar de galho em galho.",
     "Leopardo": "Tem manchas rosetas, é um excelente escalador e vive em diversas regiões da África e Ásia.",
-    "Elefante-marinho": "Vive no oceano, é um excelente mergulhador e tem uma probóscide.",
+    "Elefante Marinho": "Vive no oceano, é um excelente mergulhador e tem uma probóscide.",
     "Canguru": "Tem patas traseiras fortes, vive na Austrália e é capaz de saltar longas distâncias.",
     "Cobra": "É um réptil, tem uma língua bifurcada e é um predador.",
     "Polvo": "Vive no mar, tem tentáculos e se camufla para se proteger de predadores.",
@@ -56,7 +56,7 @@ while not resposta_certa:
     time.sleep(2)
     print(animais[animal_aleatorio])
 
-    escolha = input("Qual é o animal da dica?: ")
+    escolha = input("Qual é o animal da dica?: ").strip()
 
     
     if escolha.capitalize() == animal_aleatorio:
