@@ -14,10 +14,10 @@ class IntroApp:
         self.label_basic = customtkinter.CTkLabel(self.frame, text="Digite seus nomes e vamos começar!", font=("Arial bold", 18), corner_radius=15, text_color="black")
         self.label_basic.pack(pady=10)
 
-        self.name1 = customtkinter.CTkEntry(self.frame, placeholder_text="Digite o 1° nome: ", placeholder_text_color="black", fg_color="#B0C4DE")
+        self.name1 = customtkinter.CTkEntry(self.frame, placeholder_text="Digite o 1° nome: ", placeholder_text_color="black", fg_color="#B0C4DE", text_color="black")
         self.name1.pack(pady=30)
 
-        self.name2 = customtkinter.CTkEntry(self.frame, placeholder_text="Digite o 2° nome: ", placeholder_text_color="black", fg_color="#B0C4DE")
+        self.name2 = customtkinter.CTkEntry(self.frame, placeholder_text="Digite o 2° nome: ", placeholder_text_color="black", fg_color="#B0C4DE", text_color="black")
         self.name2.pack(pady=50)
 
         self.btn_pronto = customtkinter.CTkButton(self.frame, text="Pronto!", border_spacing=5, command=self.event)

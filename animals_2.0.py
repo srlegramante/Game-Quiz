@@ -36,14 +36,16 @@ def mensagem_apoio_acertos():
     elif quantidade_de_acertos >=10:
         print("Parece que temos um expert com animais em!")
     else:
-        pass
+        print("É um biologo?")
 
 def mensagem_apoio_erros():
     if quantidade_de_erros == 5:
         print("Não desanime! errando que se aprende...")
     elif quantidade_de_erros >=10:
         print("Eita! caso não conheça os animais citados a cima, não desanime, apenas pesquise um pouco sobre o assunto.")
-
+    else:
+        print("Não desanime, é assim que se obtêm conhecimento!")
+        
 #contador de pontos
 quantidade_de_erros = 0
 quantidade_de_acertos = 0
@@ -82,3 +84,11 @@ while not resposta_certa:
 print("Fim do jogo meu nobre.")
 print(f"Sua quantidade de erros são {quantidade_de_erros} erros.")
 print(f"Sua quantidade de acertos são = {quantidade_de_acertos} acertos.")
+
+
+'''
+if __name__ == "__main__":
+    root = customtkinter.CTk()
+    app = MainPage(root, ["Jogador1", "Jogador2"])  # This line is just for testing purposes
+    root.mainloop()
+'''
