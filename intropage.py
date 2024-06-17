@@ -26,17 +26,36 @@ class IntroApp:
         label_basic = customtkinter.CTkLabel(self.frame, text="")
         label_basic.pack(pady=10)
 
+        self.error_label = customtkinter.CTkLabel(self.frame, text="", text_color="red")
+        self.error_label.pack(pady=10)
+
+        self.names_list = []
+
     def event(self):
-        self.root.destroy()
-        mainpage = customtkinter.CTk()
-        MainPage(mainpage)
-        mainpage.mainloop()
+        if self.verify_type_names():
+            self.names()
+            self.root.destroy()
+            mainpage = customtkinter.CTk()
+            MainPage(mainpage, self.names_list)
+            mainpage.mainloop()
+        else:
+            self.error_label.configure(text="Por favor, digite caracteres válidos.")
+
+    def verify_type_names(self):
+        invalid_chars = set('#!"$%¨&*()-_=]')
+        user1 = self.name1.get()
+        user2 = self.name2.get()
+        
+        if any(char in invalid_chars for char in user1) or any(char in invalid_chars for char in user2):
+            return False
+        return True
 
     def names(self):
         user1 = self.name1.get()
         user2 = self.name2.get()
 
-        self.names = [user1, user2]
+        self.names_list = [user1, user2]
+        
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
