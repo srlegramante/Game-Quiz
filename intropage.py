@@ -1,6 +1,5 @@
 import customtkinter
 from mainpage import MainPage
-from PIL import Image, ImageTk
 
 class IntroApp:
     def __init__(self, root):
@@ -9,22 +8,36 @@ class IntroApp:
         self.root.title("Animals")
         self.root.iconbitmap('./img/gamer.ico')
 
-        frame = customtkinter.CTkFrame(self.root, width=300, height=200, corner_radius=10)
-        frame.pack(padx=20, pady=20)
+        self.frame = customtkinter.CTkFrame(self.root, width=300, height=300, corner_radius=10, fg_color="#FFFFFF")
+        self.frame.pack(padx=20, pady=20)
 
-        label_basic = customtkinter.CTkLabel(frame, text="Label Básica", font=("Arial bold", 30), corner_radius=15)
+        self.label_basic = customtkinter.CTkLabel(self.frame, text="Digite seus nomes e vamos começar!", font=("Arial bold", 18), corner_radius=15, text_color="black")
+        self.label_basic.pack(pady=10)
+
+        self.name1 = customtkinter.CTkEntry(self.frame, placeholder_text="Digite o 1° nome: ", placeholder_text_color="black", fg_color="#B0C4DE")
+        self.name1.pack(pady=30)
+
+        self.name2 = customtkinter.CTkEntry(self.frame, placeholder_text="Digite o 2° nome: ", placeholder_text_color="black", fg_color="#B0C4DE")
+        self.name2.pack(pady=50)
+
+        self.btn_pronto = customtkinter.CTkButton(self.frame, text="Pronto!", border_spacing=5, command=self.event)
+        self.btn_pronto.pack()
+
+        label_basic = customtkinter.CTkLabel(self.frame, text="")
         label_basic.pack(pady=10)
 
-
-        self.root.after(2000, self.show_main_window)
-
-    def show_main_window(self):
+    def event(self):
         self.root.destroy()
-        intro_root = customtkinter.CTk()
-        MainPage(intro_root)
-        intro_root.mainloop()
+        mainpage = customtkinter.CTk()
+        MainPage(mainpage)
+        mainpage.mainloop()
 
-    
+    def names(self):
+        user1 = self.name1.get()
+        user2 = self.name2.get()
+
+        self.names = [user1, user2]
+
 if __name__ == "__main__":
     root = customtkinter.CTk()
     app = IntroApp(root)
