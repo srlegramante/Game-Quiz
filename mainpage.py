@@ -17,13 +17,22 @@ class MainPage:
         label2 = customtkinter.CTkLabel(frame1, text="Um animal aleatorio irá aparecer, tente advinha-lo!")
         label2.pack(pady=20, padx=20)
 
+        self.pontos_player1 = customtkinter.CTkLabel(frame1, text="", text_color="black", width=200)
+        self.pontos_player1.pack(pady=20, padx=20)
+
+        self.pontos_player2 = customtkinter.CTkLabel(frame1, text="", text_color="black", width=200)
+        self.pontos_player2.pack(pady=20, padx=20)
+
         self.btn_ver_dica = customtkinter.CTkButton(frame1, text="Ver dica: ", command=self.run_game_logic)
         self.btn_ver_dica.pack(pady=20, padx=20)
 
         self.hint_label = customtkinter.CTkLabel(frame1, text="", text_color="black", width=200)
         self.hint_label.pack(pady=20, padx=20)
 
-        self.resposta_jogador = customtkinter.CTkEntry(frame1, placeholder_text="Qual é o animal? ", text_color="black")
+        self.certo_errado = customtkinter.CTkLabel(frame1, text="", text_color="black", width=200)
+        self.certo_errado.pack(pady=20, padx=20)
+
+        self.resposta_jogador = customtkinter.CTkEntry(frame1, placeholder_text="Qual é o animal? ", text_color="black", placeholder_text_color="black")
         self.resposta_jogador.pack(pady=20, padx=20)
 
         self.btn_conferir = customtkinter.CTkButton(frame1, text="Conferir", command=self.answer_player, width=75, height=30, fg_color="yellow", text_color="black")
@@ -67,23 +76,53 @@ class MainPage:
     
 
     def run_game_logic(self):
-        animal, dica = self.random_animal()
-        self.hint_label.configure(text=dica)
-        print(f"O animal escolhido foi: {animal}")
+        self.animal, self.dica = self.random_animal()
+        self.hint_label.configure(text=self.dica)
+        print(f"O animal escolhido foi: {self.animal}")
 
-    def answer_player(self, names):
+    def pontos_jogador1(self):
         self.quantidade_max = 10
+        self.pontos_player1.configure(text="")
+        while self.quantidade_max < 10:
+            print(f"Pontos: {self.quantidade_pontos_player1}")
+            
+    def pontos_jogador2(self):
+        self.quantidade_max = 10
+        self.pontos_player2.configure(text="")
+        while self.quantidade_max < 10:
+            print(f"Pontos: {self.quantidade_pontos_player2}")
+
+    def answer_player(self):
         self.quantidade_pontos_player1 = 0
         self.quantidade_pontos_player2 = 0
 
-        player1 = {''.join(names[0])}
-        player2 = {''.join(names[1])}
+        #player1 = {''.join(names[0])}
+        #player2 = {''.join(names[1])} {player2} {player1}
 
         resposta_certa = False
 
         while not resposta_certa:
-            if self.resposta_jogador == self.random_animal:
+            self.btn_ver_dica.configure(state=customtkinter.DISABLED)
+            if self.resposta_jogador.get() == self.random_animal:
                 self.player1 = self.quantidade_pontos_player1 =+ 1
-                print(f"O {player1} está com {self.quantidade_pontos_player1}")
+                print(f"O  está com {self.quantidade_pontos_player1}. vamos para o proximo!")
+            elif self.resposta_jogador.get() != self.random_animal:
+                print(f"Resposta errada... é a vez do .")
+                self.btn_conferir.configure(state=customtkinter.NORMAL)
+            elif self.resposta_jogador.get() == self.random_animal:
+                self.btn_ver_dica.configure(state=customtkinter.DISABLED)
+                self.player2 = self.quantidade_pontos_player2 =+ 1
+                print(f"O  está com {self.quantidade_pontos_player2}. vamos para o proximo!")
+            elif self.resposta_jogador.get() != self.random_animal:
+                print(f"Resposta errada... é a vez do .")
+                self.btn_conferir.configure(state=customtkinter.NORMAL)
             else:
-                pass
+                print("Fim do jogo")
+                resposta_certa = True
+    
+        if self.quantidade_pontos_player1 == 10:
+            print(f"Parabéns {player1} você é o vencedor!")
+        elif self.quantidade_pontos_player2 == 10: 
+            print(f"Parabéns {player2} você é o vencedor!")
+        else:
+            pass
