@@ -2,6 +2,13 @@
 
 Este projeto foi iniciado com o objetivo de entender loops e dicionários em Python, mas acabou se estendendo para incluir uma interface gráfica.
 
+Uma breve descrição do meu projeto.
+
+## Captura de Tela
+
+![Captura de Tela](img/linkk.png)
+
+
 ## Tecnologias e Bibliotecas Usadas
 
 - Python 3.11.9
