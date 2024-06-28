@@ -1,4 +1,4 @@
-# Projeto de Loops, Dicionários e Interface Gráfica
+# Projeto de Interface Gráfica
 
 Este projeto foi iniciado com o objetivo de entender loops e dicionários em Python, mas acabou se estendendo para incluir uma interface gráfica.
 
